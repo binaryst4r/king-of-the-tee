@@ -1,0 +1,13 @@
+/* Safari 4.0 - 8.0 */
+.slide-right
+
+@-webkit-keyframes slide-right {
+    from {left: 0; opacity: 1}
+    to {left: 100%; opacity: 0}
+}
+
+/* Standard syntax */
+@keyframes slide-right {
+    from {left: 0; opacity: 1}
+    to {left: 100%; opacity: 0}
+}

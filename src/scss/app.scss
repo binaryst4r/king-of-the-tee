@@ -1,0 +1,11 @@
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+@import
+  'views/homepage',
+  'views/account';
+@import
+  'common/index',
+  'common/forms',
+  'common/typography',
+  'common/buttons';

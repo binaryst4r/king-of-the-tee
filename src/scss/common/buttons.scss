@@ -1,0 +1,23 @@
+button {
+  border: none;
+  border-radius: 3px;
+  font-family: 'Roboto';
+
+  &.sm {
+    padding: 6px 10px;
+  }
+
+  &.md {
+    padding: 8px 16px;
+  }
+
+  &.lg {
+    padding: 14px 20px;
+    font-size: 20px;
+  }
+
+  &.primary {
+    background-color: #45CB85;
+    color: #fff;
+  }
+}

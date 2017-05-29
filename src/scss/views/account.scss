@@ -1,0 +1,21 @@
+#account {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+
+  #account-nav {
+    order: 1;
+    width: 20%;
+    height: 97vh;
+    height: 100%;
+    border-right: 1px solid #ddd; 
+  }
+
+  #content {
+    height: 100%;
+    order: 2;
+    width: 75%
+  }
+}
