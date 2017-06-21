@@ -8,6 +8,7 @@ export class Zipcode extends Component {
 
   render() {
     const {zipcode, toggleStep, changeZipcode} = this.props;
+    console.log(zipcode)
     return (
       <div id="zipcode-form">
         <label>Enter Zipcode</label>

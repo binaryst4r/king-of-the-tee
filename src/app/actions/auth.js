@@ -82,15 +82,14 @@ export const register = (payload, redirect='/account') => {
 export const logout = () => {
   return (dispatch) => {
     let golfer = getGolfer();
+    console.log(golfer);
     let authHeader = makeAuthHeader(golfer.email, golfer.authentication_token);
     dispatch(authRequest());
-    remove(`${KOTT_API_URL}/golfer/auth/sign_out`, {}, authHeader)
+    remove(`${KOTT_API_URL}/golfers/auth/sign_out`, {}, authHeader)
       .then(response => {
         dispatch(authResponse({
           id: null,
-          email: null,
-          first_name: null,
-          last_name: null
+          email: null
         }));
         clearGolfer();
         clearLocation();

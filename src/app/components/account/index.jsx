@@ -6,16 +6,26 @@ import _ from 'underscore';
 import {getGolfer} from 'utils/golfer';
 //actions
 import {actions} from 'actions/resources';
+import {logout} from 'actions/auth';
 // components
 import AccountNav from './common/nav';
 
 export class Account extends Component {
+  constructor() {
+    super();
+    this.logout = this.logout.bind(this);
+  }
   componentWillMount() {
     const {
       fetchGolfer
     } = this.props;
 
     fetchGolfer(getGolfer().id);
+  }
+
+  logout(e) {
+    e.preventDefault();
+    this.props.logout();
   }
 
   render() {
@@ -31,6 +41,7 @@ export class Account extends Component {
       return (
         <div id='account'>
           <AccountNav
+            logout={this.logout}
             golfer={golfer} />
           <div id="content">
             {childrenWithProps}
@@ -52,5 +63,6 @@ export default connect(
   },
   dispatch => ({
     fetchGolfer: bindActionCreators(actions.fetchGolfer, dispatch),
+    logout: bindActionCreators(logout, dispatch)
   })
 )(Account);

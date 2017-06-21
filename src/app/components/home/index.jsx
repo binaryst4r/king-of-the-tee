@@ -12,7 +12,7 @@ export class Home extends Component {
   constructor() {
     super();
     this.state = {
-      zipcode: null,
+      zipcode: getLocation() ? getLocation().zipcode : null,
       step: 0
     };
     this.toggleStep = this.toggleStep.bind(this);
@@ -21,10 +21,11 @@ export class Home extends Component {
   }
 
   register(data) {
-    console.log(data)
     const {register} = this.props
     let payload = {
       email: data.email,
+      handicap: data.handicap,
+      username: data.username,
       password: data.password,
       password_confirmation: data.password,
       zipcode: getLocation().zipcode
@@ -51,7 +52,7 @@ export class Home extends Component {
 
   render() {
     const {step} = this.state;
-    const {redirect} = this.props;
+    const {redirect, loading} = this.props;
     let registration;
 
     switch (step) {
@@ -67,7 +68,12 @@ export class Home extends Component {
       )
       break;
     case 2:
-      registration = <RegistrationForm onSubmit={this.register} step={step} />
+      registration = (
+        <RegistrationForm
+          loading={loading}
+          onSubmit={this.register}
+          step={step} />
+      )
       break
     default:
       registration = <Info step={step} />
@@ -89,7 +95,9 @@ export class Home extends Component {
 }
 
 export default connect(
-  state => ({state}),
+  state => ({
+    loading: state.auth.loading
+  }),
   dispatch => ({
     redirect: bindActionCreators(push, dispatch),
     register: bindActionCreators(register, dispatch),
